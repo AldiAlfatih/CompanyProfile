@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Montserrat } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/next'
+import TargetCursor from '../components/ui/TargetCursor/TargetCursor'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en" className="dark bg-background" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+          <TargetCursor targetSelector="a, button, .cursor-target" />
           {children}
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

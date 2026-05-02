@@ -8,6 +8,9 @@ import {
   Palette,
   CheckCircle2,
 } from 'lucide-react'
+import ShinyText from '../ui/ShinyText/ShinyText'
+import SpotlightCard from '../ui/SpotlightCard/SpotlightCard'
+import SplitText from '../ui/SplitText/SplitText'
 
 const services = [
   {
@@ -51,7 +54,7 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-            Our Expertise
+            <SplitText text="Our Expertise" delay={0.08} />
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Six pillars of technical excellence delivered by our specialized team.
@@ -73,23 +76,23 @@ export function ServicesSection() {
             
             return (
               // // Placeholder for "Spotlight Card" for each service
-              <div
+              <SpotlightCard
                 key={idx}
-                className={`group relative p-8 bg-[#000080]/40 backdrop-blur-sm border border-primary/10 rounded-2xl hover:border-primary/40 transition-all duration-500 ${spans[idx]}`}
+                className={`group relative p-8 bg-card/40 backdrop-blur-sm border border-primary/10 rounded-2xl hover:border-primary/40 transition-all duration-500 ${spans[idx]}`}
+                spotlightColor="rgba(255, 214, 10, 0.15)"
               >
-                <div className="mb-6">
+                <div className="mb-6 relative z-10">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  {service.title}
+                <h3 className="text-2xl font-bold text-foreground mb-4 relative z-10">
+                  <ShinyText text={service.title} color="var(--foreground)" shineColor="var(--primary)" speed={3} />
                 </h3>
-                <p className="text-foreground/70 leading-relaxed text-lg">
+                <p className="text-foreground/70 leading-relaxed text-lg relative z-10">
                   {service.description}
                 </p>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-              </div>
+              </SpotlightCard>
             )
           })}
         </div>

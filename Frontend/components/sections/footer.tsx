@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import TextPressure from '../ui/TextPressure/TextPressure'
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
 
 export function FooterSection() {
@@ -29,13 +30,22 @@ export function FooterSection() {
           <h2 className="text-6xl sm:text-8xl lg:text-9xl font-bold text-primary/10 hover:text-primary transition-all duration-1000 cursor-default select-none tracking-tighter">
             OgiTech
           </h2>
+          <TextPressure
+            text="OgiTech"
+            textColor="var(--primary)"
+            minFontSize={72}
+            flex={true}
+            weight={true}
+            width={true}
+            italic={true}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
           {/* Brand & Mission */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="relative w-12 h-12 rounded-xl bg-white/5 border border-primary/20 flex items-center justify-center p-2">
+              <div className="relative w-12 h-12 rounded-xl bg-white/5 border border-primary/10 overflow-hidden">
                 <Image
                   src="/logo_ogitech_clean.jpg"
                   alt="OgiTech Logo"
@@ -43,7 +53,17 @@ export function FooterSection() {
                   className="object-contain p-1"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">OgiTech</h3>
+              <div className="relative w-32 h-10">
+                <TextPressure
+                  text="OgiTech"
+                  textColor="var(--primary)"
+                  minFontSize={24}
+                  flex={true}
+                  weight={true}
+                  width={true}
+                  italic={true}
+                />
+              </div>
             </div>
             <p className="text-foreground/60 text-lg leading-relaxed">
               Architecting the future through precision AI and IoT systems. Founded by technical pioneers from Angkatan 1 ITH.

@@ -1,5 +1,9 @@
 'use client'
 
+import MagnetLines from '../ui/MagnetLines/MagnetLines'
+import TrueFocus from '../ui/TrueFocus/TrueFocus'
+import DecryptedText from '../ui/DecryptedText/DecryptedText'
+
 export function AboutSection() {
   return (
     <section id="about" className="py-20 sm:py-32 bg-background px-4 sm:px-6 lg:px-8">
@@ -18,12 +22,28 @@ export function AboutSection() {
               <p className="text-xl text-foreground/80 leading-relaxed mb-6">
                 OgiTech was founded by a collective of technical experts from 
                 {/* // Placeholder for "True Focus" on the following text */}
-                <span className="font-bold text-primary"> Angkatan 1 (First Batch) of Institut Teknologi Bacharuddin Jusuf Habibie (ITH)</span>.
+                <TrueFocus 
+                  sentence="Angkatan 1 (First Batch) of Institut Teknologi Bacharuddin Jusuf Habibie (ITH)"
+                  manualMode={false}
+                  blurAmount={2}
+                  borderColor="var(--primary)"
+                  glowColor="rgba(255, 214, 10, 0.4)"
+                  animationDuration={0.8}
+                  pauseBetweenAnimations={1.5}
+                  className="inline font-bold text-primary"
+                />.
               </p>
               {/* // Placeholder for "Decrypted Text" for the company history paragraph */}
-              <p className="text-lg text-foreground/70 leading-relaxed">
-                Our core team represents a unique synergy between Computer Science and Information Systems disciplines, bringing together complementary expertise to solve complex technical challenges with academic rigor and industry-leading innovation.
-              </p>
+              <div className="text-lg text-foreground/70 leading-relaxed">
+                <DecryptedText
+                  text="Our core team represents a unique synergy between Computer Science and Information Systems disciplines, bringing together complementary expertise to solve complex technical challenges with academic rigor and industry-leading innovation."
+                  animateOn="view"
+                  revealDirection="center"
+                  speed={40}
+                  maxIterations={15}
+                  sequential={true}
+                />
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -44,8 +64,18 @@ export function AboutSection() {
           {/* Right Column - Visual Elements */}
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-2xl blur-3xl"></div>
-            <div className="relative bg-card/50 backdrop-blur-xl border border-primary/20 rounded-2xl p-8 sm:p-12">
-              <div className="space-y-6">
+            <div className="relative bg-card/50 backdrop-blur-xl border border-primary/20 rounded-2xl p-8 sm:p-12 overflow-hidden">
+              <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+                <MagnetLines 
+                  rows={12} 
+                  columns={12} 
+                  containerSize="100%" 
+                  lineColor="var(--primary)" 
+                  lineWidth="2px" 
+                  lineHeight="20px" 
+                />
+              </div>
+              <div className="relative z-10 space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
                     <span className="text-primary text-xl font-bold">1</span>

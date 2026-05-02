@@ -2,6 +2,9 @@
 
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
+import TiltedCard from '../ui/TiltedCard/TiltedCard'
+import ShinyText from '../ui/ShinyText/ShinyText'
+import SplitText from '../ui/SplitText/SplitText'
 
 const projects = [
   {
@@ -44,10 +47,7 @@ export function PortfolioSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 sm:mb-20">
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance">
-            Our{' '}
-            <span className="text-gradient bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              Portfolio
-            </span>
+            <SplitText text="Our Portfolio" delay={0.08} />
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl">
             A selection of projects showcasing our expertise across AI, IoT, cybersecurity, and enterprise systems.
@@ -56,47 +56,44 @@ export function PortfolioSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            // // Placeholder for "Tilted Card" (3D tilt effect on hover) wrapper
-            <div
+            <TiltedCard
               key={project.id}
-              className="group relative rounded-3xl overflow-hidden bg-[#000080]/30 backdrop-blur-md border border-primary/10 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10"
-            >
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-secondary">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00044a] via-transparent to-transparent"></div>
-              </div>
+              imageSrc={project.image}
+              altText={project.title}
+              captionText={project.title}
+              containerHeight="500px"
+              containerWidth="100%"
+              imageHeight="500px"
+              imageWidth="100%"
+              rotateAmplitude={10}
+              scaleOnHover={1.02}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={true}
+              overlayContent={
+                <div className="p-8 h-full flex flex-col justify-end bg-gradient-to-t from-background/90 via-background/40 to-transparent rounded-[15px] border border-primary/10">
+                  <h3 className="text-3xl font-bold text-foreground mb-4">
+                    {project.title}
+                  </h3>
 
-              {/* Content Container */}
-              <div className="p-8">
-                <h3 className="text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
+                  <p className="text-foreground/80 text-base leading-relaxed mb-8">
+                    {project.description}
+                  </p>
 
-                <p className="text-foreground/70 text-base leading-relaxed mb-8">
-                  {project.description}
-                </p>
-
-                {/* Technical Stack */}
-                <div className="flex flex-wrap gap-3">
-                  {project.stack.map((tech) => (
-                    // // Placeholder for "Shiny Text" (Golden shimmer effect) on the technology tags
-                    <Badge
-                      key={tech}
-                      variant="outline"
-                      className="px-4 py-1.5 rounded-full bg-primary/5 border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
+                  <div className="flex flex-wrap gap-3">
+                    {project.stack.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="outline"
+                        className="px-4 py-1.5 rounded-full bg-primary/10 border-primary/30 text-sm font-medium"
+                      >
+                        <ShinyText text={tech} color="var(--primary)" shineColor="#FFFFFF" speed={3} />
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
+              }
+            />
           ))}
         </div>
       </div>

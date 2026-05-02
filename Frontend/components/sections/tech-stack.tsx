@@ -1,5 +1,7 @@
 'use client'
 
+import LogoLoop from '../ui/LogoLoop/LogoLoop'
+
 export function TechStackSection() {
   const technologies = [
     'Next.js',
@@ -31,17 +33,35 @@ export function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {technologies.map((tech, idx) => (
-            <div
-              key={idx}
-              className="group p-6 bg-card border border-border rounded-lg hover:border-accent/50 transition-all duration-300 flex items-center justify-center min-h-[120px] hover:shadow-lg hover:shadow-accent/20"
-            >
-              <span className="text-center font-semibold text-foreground group-hover:text-accent transition-colors">
-                {tech}
-              </span>
-            </div>
-          ))}
+        <div className="space-y-8">
+          <LogoLoop
+            speed={40}
+            direction="left"
+            items={technologies.map((tech, idx) => (
+              <div
+                key={idx}
+                className="group px-8 py-6 bg-secondary/10 border border-primary/10 rounded-xl hover:border-primary/40 transition-all duration-300 flex items-center justify-center min-w-[200px] backdrop-blur-sm"
+              >
+                <span className="font-semibold text-foreground/80 group-hover:text-primary transition-colors text-lg">
+                  {tech}
+                </span>
+              </div>
+            ))}
+          />
+          <LogoLoop
+            speed={50}
+            direction="right"
+            items={[...technologies].reverse().map((tech, idx) => (
+              <div
+                key={idx}
+                className="group px-8 py-6 bg-secondary/10 border border-primary/10 rounded-xl hover:border-primary/40 transition-all duration-300 flex items-center justify-center min-w-[200px] backdrop-blur-sm"
+              >
+                <span className="font-semibold text-foreground/80 group-hover:text-primary transition-colors text-lg">
+                  {tech}
+                </span>
+              </div>
+            ))}
+          />
         </div>
       </div>
     </section>

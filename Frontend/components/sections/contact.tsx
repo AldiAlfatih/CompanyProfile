@@ -7,6 +7,7 @@ import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import StarBorder from '../ui/StarBorder/StarBorder'
 import {
   Form,
   FormControl,
@@ -81,7 +82,7 @@ export function ContactSection() {
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Your name"
+                        placeholder="OgiTech"
                         {...field}
                         className="bg-background border-border"
                       />
@@ -100,7 +101,7 @@ export function ContactSection() {
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="your@email.com"
+                        placeholder="ogitech@email.com"
                         {...field}
                         className="bg-background border-border"
                       />
@@ -148,13 +149,16 @@ export function ContactSection() {
                 )}
               />
 
-              <Button
+              <StarBorder
+                as="button"
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 text-base"
+                className="w-full"
+                color="var(--primary)"
+                speed="4s"
               >
                 {isSubmitting ? 'Sending...' : 'Schedule Discovery Call'}
-              </Button>
+              </StarBorder>
             </form>
           </Form>
         </div>
